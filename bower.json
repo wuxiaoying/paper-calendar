@@ -11,7 +11,7 @@
     "paper-calendar",
     "datepicker"
   ],
-  "license": "MIT"
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
