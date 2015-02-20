@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../core-icons/core-icons.html">
+
+<script src="../moment/moment.js"></script>
+
+<polymer-element name="paper-calendar" attributes="value events">
+  <template>
+    <link rel="stylesheet" href="paper-calendar.css">
+    <div id="month">
+      {{monthDisplay}}
+    </div>
+    <div id="weekdays">
+      <template repeat="{{weekday in weekdaysDisplay}}">
+        <div class="weekday">{{weekday}}</div>
+      </template>
+    </div>
+    <div id="dates">
+      <template repeat="{{week in month}}">
+        <div>
+          <template repeat="{{date in week}}">
+            <div data-date="{{date.raw}}"
+              class="{{ {date: true, today: date.isToday, event: date.isEvent, 'in-month': date.inCurrentMonth } | tokenList}}">
+                {{date.date}}
+              </div>
+          </template>
+        </div>
+      </template>
+    </div>
+   </template>
+  <script src="paper-calendar.js"></script>
+</polymer-element>
