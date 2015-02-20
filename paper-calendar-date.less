@@ -1,0 +1,32 @@
+// out: paper-calendar-date.css
+
+@primary-color: #009688;
+
+:host {
+  display: inline-block;
+  position:relative;
+}
+
+div {
+  min-width: 36px;
+  text-align: center;
+  margin: 3px;
+  border-radius: 50%;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+:not(.in-month) {
+  background-color: white !important;
+  color: white !important;
+  cursor: default;
+}
+
+.today {
+  color: @primary-color;
+}
+
+.selected-date {
+  background-color: @primary-color;
+  color: white;
+}

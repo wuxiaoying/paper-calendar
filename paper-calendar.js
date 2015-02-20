@@ -34,6 +34,7 @@
           weekday = _ref[_j];
           month = iterator.get('month');
           week.push({
+            raw: iterator.clone(),
             date: iterator.get('date'),
             month: month,
             isToday: iterator.isSame(this.today, 'd'),
@@ -45,8 +46,13 @@
         this.month.push(week);
       }
     },
-    onDateSelect: function(e, detail) {
-      this.fire('date-change');
+    onSelected: function(e, detail) {
+      var _ref;
+      if ((_ref = this.selectedDate) != null) {
+        _ref.selected = false;
+      }
+      this.selectedDate = detail;
+      this.fire('date-change', detail.raw);
     },
     _IsEvent: function(date) {
       var event, _i, _len, _ref;

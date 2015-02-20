@@ -20,14 +20,23 @@
       <template repeat="{{week in month}}">
         <div>
           <template repeat="{{date in week}}">
-            <div data-date="{{date.raw}}"
-              class="{{ {date: true, today: date.isToday, event: date.isEvent, 'in-month': date.inCurrentMonth } | tokenList}}">
-                {{date.date}}
-              </div>
+            <paper-calendar-date date="{{date}}" on-selected="{{onSelected}}"></paper-calendar-date>
           </template>
         </div>
       </template>
     </div>
    </template>
   <script src="paper-calendar.js"></script>
+</polymer-element>
+
+<polymer-element name="paper-calendar-date" attributes="date">
+  <template>
+    <link rel="stylesheet" href="paper-calendar-date.css">
+    <div
+      on-tap="{{onSelect}}"
+      class="{{ {date: true, today: date.isToday, event: date.isEvent, 'in-month': date.inCurrentMonth, 'selected-date': date.selected } | tokenList}}">
+      {{date.date}}
+    </div>
+  </template>
+  <script src="paper-calendar-date.js"></script>
 </polymer-element>

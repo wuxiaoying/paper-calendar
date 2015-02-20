@@ -1,18 +1,9 @@
-.date,
 .weekday {
   display: inline-block;
   min-width: 36px;
-  padding: 11px 3px;
+  padding: 9px 0;
   text-align: center;
-}
-.date {
-  border-radius: 50%;
-}
-.date:not(.in-month) {
-  background-color: white !important;
-  color: white !important;
-}
-.weekday {
+  margin: 3px;
   font-weight: bold;
   color: gray;
 }
@@ -22,8 +13,4 @@
   width: 320px;
   margin-bottom: 10px;
   color: gray;
-}
-.today {
-  background-color: teal;
-  color: white;
 }

@@ -23,6 +23,7 @@ Polymer
         month = iterator.get 'month'
 
         week.push
+          raw: iterator.clone()
           date: iterator.get 'date'
           month: month
           isToday: iterator.isSame @today, 'd'
@@ -35,8 +36,10 @@ Polymer
 
     return
 
-  onDateSelect: (e, detail) ->
-    @fire 'date-change'
+  onSelected: (e, detail) ->
+    @selectedDate?.selected = false
+    @selectedDate = detail
+    @fire 'date-change', detail.raw
     return
 
   _IsEvent: (date) ->
