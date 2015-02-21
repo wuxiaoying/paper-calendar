@@ -4,18 +4,15 @@ Polymer
 
   ready: ->
     @weekdaysDisplay = (weekday[0] for weekday in @weekdays)
+    @referenceDay = @today
     return
 
-  attached: ->
-    @value = @today if not @value
-    return
+  referenceDayChanged: ->
+    currentMonth = @referenceDay.get 'month'
+    numWeeks = Math.ceil @referenceDay.daysInMonth() / @weekdays.length
+    @monthDisplay = @referenceDays.format 'MMMM YYYY'
 
-  valueChanged: ->
-    numWeeks = Math.ceil @value.daysInMonth() / @weekdays.length
-    currentMonth = @value.get 'month'
-    @monthDisplay = @value.format 'MMMM YYYY'
-
-    iterator = @value.clone().startOf('month').startOf('week')
+    iterator = @referenceDay.clone().startOf('month').startOf('week')
     @month = []
     for weekIndex in [0...numWeeks]
       week = []

@@ -14,18 +14,14 @@
         }
         return _results;
       }).call(this);
+      this.referenceDay = this.today;
     },
-    attached: function() {
-      if (!this.value) {
-        this.value = this.today;
-      }
-    },
-    valueChanged: function() {
+    referenceDayChanged: function() {
       var currentMonth, iterator, month, numWeeks, week, weekIndex, weekday, _i, _j, _len, _ref;
-      numWeeks = Math.ceil(this.value.daysInMonth() / this.weekdays.length);
-      currentMonth = this.value.get('month');
-      this.monthDisplay = this.value.format('MMMM YYYY');
-      iterator = this.value.clone().startOf('month').startOf('week');
+      currentMonth = this.referenceDay.get('month');
+      numWeeks = Math.ceil(this.referenceDay.daysInMonth() / this.weekdays.length);
+      this.monthDisplay = this.referenceDays.format('MMMM YYYY');
+      iterator = this.referenceDay.clone().startOf('month').startOf('week');
       this.month = [];
       for (weekIndex = _i = 0; 0 <= numWeeks ? _i < numWeeks : _i > numWeeks; weekIndex = 0 <= numWeeks ? ++_i : --_i) {
         week = [];
