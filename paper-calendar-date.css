@@ -9,6 +9,7 @@ div {
   border-radius: 50%;
   padding: 8px 0;
   cursor: pointer;
+  border: 1px solid transparen;
 }
 :not(.in-month) {
   background-color: white !important;
@@ -21,4 +22,10 @@ div {
 .selected-date {
   background-color: #009688;
   color: white;
+}
+.selected-date.event {
+  border: 1px solid transparent;
+}
+.event {
+  border: 1px solid lightgray;
 }

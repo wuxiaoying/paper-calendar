@@ -51,7 +51,7 @@ Polymer
 
   _IsEvent: (date) ->
     for event in @events or []
-      if event.isSame date
+      if event.isSame date, 'day'
         return true
 
     false

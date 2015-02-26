@@ -63,7 +63,7 @@
       _ref = this.events || [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         event = _ref[_i];
-        if (event.isSame(date)) {
+        if (event.isSame(date, 'day')) {
           return true;
         }
       }
