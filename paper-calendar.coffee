@@ -4,13 +4,13 @@ Polymer
 
   ready: ->
     @weekdaysDisplay = (weekday[0] for weekday in @weekdays)
-    @referenceDay = @today
+    @referenceDay = @today.clone()
     return
 
   referenceDayChanged: ->
     currentMonth = @referenceDay.get 'month'
     numWeeks = Math.ceil @referenceDay.daysInMonth() / @weekdays.length
-    @monthDisplay = @referenceDays.format 'MMMM YYYY'
+    @monthDisplay = @referenceDay.format 'MMMM YYYY'
 
     iterator = @referenceDay.clone().startOf('month').startOf('week')
     @month = []
@@ -23,7 +23,7 @@ Polymer
           raw: iterator.clone()
           date: iterator.get 'date'
           month: month
-          isToday: iterator.isSame @today, 'd'
+          isToday: iterator.isSame @today, 'day'
           isEvent: @_IsEvent iterator
           inCurrentMonth: month is currentMonth
 
@@ -31,6 +31,16 @@ Polymer
 
       @month.push week
 
+    return
+
+  goNextMonth: ->
+    @referenceDay.add 1, 'month'
+    @referenceDayChanged()
+    return
+
+  goPrevMonth: ->
+    @referenceDay.subtract 1, 'month'
+    @referenceDayChanged()
     return
 
   onSelected: (e, detail) ->

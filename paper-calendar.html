@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../core-icons/core-icons.html">
 
@@ -8,8 +9,12 @@
 <polymer-element name="paper-calendar" attributes="selectedDate events">
   <template>
     <link rel="stylesheet" href="paper-calendar.css">
-    <div id="month">
-      {{monthDisplay}}
+    <div id="month" horizontal layout center>
+      <paper-icon-button icon="chevron-left" on-tap="{{goPrevMonth}}"></paper-icon-button>
+      <div flex>
+        {{monthDisplay}}
+      </div>
+      <paper-icon-button icon="chevron-right" on-tap="{{goNextMonth}}"></paper-icon-button>
     </div>
     <div id="weekdays">
       <template repeat="{{weekday in weekdaysDisplay}}">

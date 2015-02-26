@@ -14,13 +14,13 @@
         }
         return _results;
       }).call(this);
-      this.referenceDay = this.today;
+      this.referenceDay = this.today.clone();
     },
     referenceDayChanged: function() {
       var currentMonth, iterator, month, numWeeks, week, weekIndex, weekday, _i, _j, _len, _ref;
       currentMonth = this.referenceDay.get('month');
       numWeeks = Math.ceil(this.referenceDay.daysInMonth() / this.weekdays.length);
-      this.monthDisplay = this.referenceDays.format('MMMM YYYY');
+      this.monthDisplay = this.referenceDay.format('MMMM YYYY');
       iterator = this.referenceDay.clone().startOf('month').startOf('week');
       this.month = [];
       for (weekIndex = _i = 0; 0 <= numWeeks ? _i < numWeeks : _i > numWeeks; weekIndex = 0 <= numWeeks ? ++_i : --_i) {
@@ -33,7 +33,7 @@
             raw: iterator.clone(),
             date: iterator.get('date'),
             month: month,
-            isToday: iterator.isSame(this.today, 'd'),
+            isToday: iterator.isSame(this.today, 'day'),
             isEvent: this._IsEvent(iterator),
             inCurrentMonth: month === currentMonth
           });
@@ -41,6 +41,14 @@
         }
         this.month.push(week);
       }
+    },
+    goNextMonth: function() {
+      this.referenceDay.add(1, 'month');
+      this.referenceDayChanged();
+    },
+    goPrevMonth: function() {
+      this.referenceDay.subtract(1, 'month');
+      this.referenceDayChanged();
     },
     onSelected: function(e, detail) {
       var _ref;
