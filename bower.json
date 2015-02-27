@@ -1,17 +1,18 @@
 {
-  "name": "paper-calendar",
-  "main": "paper-calendar.html",
+  "name": "wxy-calendar",
+  "main": "wxy-calendar.html",
   "version": "0.0.0",
-  "homepage": "https://github.com/wuxiaoying/paper-calendar",
+  "homepage": "https://github.com/wuxiaoying/wxy-calendar",
   "authors": [
     "Helen Wu <xiaoyingw12@gmail.com>"
   ],
   "keywords": [
     "paper",
-    "paper-calendar",
+    "wxy-calendar",
     "datepicker"
   ],
-  "license": "MIT",2
+  
+  "license": "MIT",
 
   "ignore": [
     "**/.*",
