@@ -2,6 +2,9 @@
   Polymer({
     weekdays: moment.weekdays(),
     today: moment(),
+    computed: {
+      selected: 'selectedDate.raw'
+    },
     ready: function() {
       var weekday;
       this.weekdaysDisplay = (function() {
@@ -15,6 +18,9 @@
         return _results;
       }).call(this);
       this.referenceDay = this.today.clone();
+    },
+    eventsChanged: function() {
+      this.referenceDayChanged();
     },
     referenceDayChanged: function() {
       var currentMonth, iterator, month, numWeeks, week, weekIndex, weekday, _i, _j, _len, _ref;
@@ -56,6 +62,7 @@
         _ref.selected = false;
       }
       this.selectedDate = detail;
+      this.selected = detail.raw;
       this.fire('date-change', detail.raw);
     },
     _IsEvent: function(date) {

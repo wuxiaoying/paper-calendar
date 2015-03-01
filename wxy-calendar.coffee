@@ -2,9 +2,16 @@ Polymer
   weekdays: moment.weekdays()
   today: moment()
 
+  computed:
+    selected: 'selectedDate.raw'
+
   ready: ->
     @weekdaysDisplay = (weekday[0] for weekday in @weekdays)
     @referenceDay = @today.clone()
+    return
+
+  eventsChanged: ->
+    @referenceDayChanged()
     return
 
   referenceDayChanged: ->
@@ -46,6 +53,7 @@ Polymer
   onSelected: (e, detail) ->
     @selectedDate?.selected = false
     @selectedDate = detail
+    @selected = detail.raw
     @fire 'date-change', detail.raw
     return
 
